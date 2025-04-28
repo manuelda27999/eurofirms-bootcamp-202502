@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 
 import { logic } from "../logic";
 
-import { Posts } from "./components/Posts";
-import { CreatePost } from "./components/CreatePosts";
+import Posts from "./components/Posts";
 
 export const Home = (props) => {
   const onUserLoggedOut = props.onUserLoggedOut;
 
-  const [view, setView] = useState("posts");
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -31,18 +29,6 @@ export const Home = (props) => {
     }
   };
 
-  const handleCreatePostClick = () => {
-    setView("create-post");
-  };
-
-  const handleCreatePostCancelCLicked = () => {
-    setView("posts");
-  };
-
-  const handlePostCreated = () => {
-    setView("posts");
-  };
-
   console.log("Home -> render");
 
   return (
@@ -62,22 +48,7 @@ export const Home = (props) => {
         </button>
       </div>
 
-      {view === "posts" && <Posts />}
-      {view === "create-post" && (
-        <CreatePost
-          onCancelClicked={handleCreatePostCancelCLicked}
-          onPostCreated={handlePostCreated}
-        />
-      )}
-      <div className="fixed bottom-0 bg-white w-full flex justify-center items-center py-4 border-t-4">
-        <button
-          className="cursor-pointer border-4 rounded-xl bg-black text-white px-6 py-2 font-bold"
-          type="button"
-          onClick={handleCreatePostClick}
-        >
-          Create Post
-        </button>
-      </div>
+      <Posts />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { logic } from "../../logic";
 
-export function Posts() {
+export default function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function Posts() {
   }, []);
 
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-32">
       {posts.map((post) => {
         return (
           <article className="w-100 mb-8" key={post.id}>
